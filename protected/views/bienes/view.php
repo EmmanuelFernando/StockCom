@@ -24,7 +24,9 @@ $this->menu=array(
 		//'id',
                 'codigo',
                 'fecha',
-		'categoria.modelo',
+		'categoria.descripcion',
+                'categoria.marca',
+                'categoria.modelo',
 		'estado.descripcion',
 	),
 )); ?>

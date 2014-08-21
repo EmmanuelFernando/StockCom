@@ -48,7 +48,7 @@
         
 	<div class="row">
 		<?php echo $form->labelEx($model,'categoria_id'); ?>
-		<?php echo $form->dropDownList($model,'categoria_id',CHtml::listData(Categorias::model()->findAll(),'id','descripcion', 'marca'),array('empty'=>'seleccione la categoria')); ?>
+		<?php echo $form->dropDownList($model,'categoria_id',CHtml::listData(Categorias::model()->findAll(),'id', 'marca','descripcion'),array('empty'=>'seleccione la categoria')); ?>
 		<?php echo $form->error($model,'estado_id'); ?>
                            
 	</div>
