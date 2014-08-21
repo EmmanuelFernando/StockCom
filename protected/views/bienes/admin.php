@@ -47,8 +47,9 @@ o <b>=</b>) al comienzo de cada uno de los valores de búsqueda para especificar
 	'columns'=>array(
 		'id',
                 'fecha',
-		'categoria.modelo',
-		'estado.descripcion',
+		'categoria.marca',
+                'categoria.modelo',
+                'estado.descripcion',
 		array(
 			'class'=>'CButtonColumn',
 		),

@@ -18,7 +18,8 @@
 	<br />
         
 	<b><?php echo CHtml::encode($data->getAttributeLabel('categoria_id')); ?>:</b>
-	<?php echo CHtml::encode($data->categoria->marca); ?>
+	<?php echo CHtml::encode($data->categoria->marca); echo '<br />'; echo CHtml::encode($data->categoria->modelo);
+        ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('estado_id')); ?>:</b>
