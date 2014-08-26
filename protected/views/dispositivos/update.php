@@ -3,19 +3,19 @@
 /* @var $model Dispositivos */
 
 $this->breadcrumbs=array(
-	'Dispositivoses'=>array('index'),
+	'Dispositivos'=>array('index'),
 	$model->id=>array('view','id'=>$model->id),
-	'Update',
+	'Actualizar',
 );
 
 $this->menu=array(
-	array('label'=>'List Dispositivos', 'url'=>array('index')),
-	array('label'=>'Create Dispositivos', 'url'=>array('create')),
-	array('label'=>'View Dispositivos', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage Dispositivos', 'url'=>array('admin')),
+	array('label'=>'Listar Dispositivos', 'url'=>array('index')),
+	array('label'=>'Nuevo Dispositivo', 'url'=>array('create')),
+	array('label'=>'Ver Dispositivos', 'url'=>array('view', 'id'=>$model->id)),
+	array('label'=>'Administrar Dispositivos', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Update Dispositivos <?php echo $model->id; ?></h1>
+<h1>Actualizar el Dispositivo <?php echo $model->codigo; ?></h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

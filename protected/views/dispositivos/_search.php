@@ -12,8 +12,8 @@
 )); ?>
 
 	<div class="row">
-		<?php echo $form->label($model,'id'); ?>
-		<?php echo $form->textField($model,'id'); ?>
+		<?php #echo $form->label($model,'id'); ?>
+		<?php #echo $form->textField($model,'id'); ?>
 	</div>
 
 	<div class="row">
@@ -23,7 +23,19 @@
 
 	<div class="row">
 		<?php echo $form->label($model,'fecha'); ?>
-		<?php echo $form->textField($model,'fecha'); ?>
+		<?php $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+                                                                            'model'=>$model,
+                                                                            'attribute'=>'fecha',
+                                                                            'value'=>$model->fecha,
+                                                                            'language'=>'es',
+                                                                            'options'=>array(
+                                                                                    'dateFormat'=>'yy-mm-dd',
+                                                                                    'constraintInput'=>'false',
+                                                                                    'duration'=>'fast',
+                                                                                    'showAnim'=>'slide',
+                                                                                            ),
+                                                                             )
+                                    ); ?>
 	</div>
 
 	<div class="row">

@@ -72,6 +72,10 @@ class Modelos extends CActiveRecord
 			'id' => 'ID',
 			'marcas_id' => 'Marcas',
 			'descripcion' => 'Descripcion',
+                    
+                        'marcas.descripcion' => 'Marca',
+			'modelos.descripcion' => 'Modelo',
+                    
 		);
 	}
 

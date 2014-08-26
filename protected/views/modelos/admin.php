@@ -1,15 +1,15 @@
 <?php
-/* @var $this DispositivosController */
-/* @var $model Dispositivos */
+/* @var $this ModelosController */
+/* @var $model Modelos */
 
 $this->breadcrumbs=array(
-	'Dispositivos'=>array('index'),
+	'Modelos'=>array('index'),
 	'Administracion',
 );
 
 $this->menu=array(
-	array('label'=>'Listar Dispositivos', 'url'=>array('index')),
-	array('label'=>'Nuevo Dispositivo', 'url'=>array('create')),
+	array('label'=>'Listar Modelos', 'url'=>array('index')),
+	array('label'=>'Nuevo Modelo', 'url'=>array('create')),
 );
 
 Yii::app()->clientScript->registerScript('search', "
@@ -18,7 +18,7 @@ $('.search-button').click(function(){
 	return false;
 });
 $('.search-form form').submit(function(){
-	$('#dispositivos-grid').yiiGridView('update', {
+	$('#modelos-grid').yiiGridView('update', {
 		data: $(this).serialize()
 	});
 	return false;
@@ -26,11 +26,11 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Administración de dispositivos</h1>
+<h1>Administracion Modelos</h1>
 
 <p>
 También puede escribir un operador de comparación (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
-or <b>=</b>) al comienzo de cada uno de los valores de búsqueda para especificar cómo se debe hacer la comparación.
+o <b>=</b>) al comienzo de cada uno de los valores de búsqueda para especificar cómo se debe hacer la comparación.
 </p>
 
 <?php echo CHtml::link('Busqueda Advanzada','#',array('class'=>'search-button')); ?>
@@ -41,18 +41,13 @@ or <b>=</b>) al comienzo de cada uno de los valores de búsqueda para especifica
 </div><!-- search-form -->
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
-	'id'=>'dispositivos-grid',
+	'id'=>'modelos-grid',
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
 		#'id',
-		'codigo',
-		'fecha',
-                'tipos.descripcion',
 		'marcas.descripcion',
-		'modelos.descripcion',
-		'estado.descripcion',
-		
+		'descripcion',
 		array(
 			'class'=>'CButtonColumn',
 		),

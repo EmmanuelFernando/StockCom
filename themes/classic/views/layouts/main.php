@@ -23,7 +23,7 @@
 <div class="container" id="page">
 
 	<div id="header">
-            <div style="float:left;"><img src="images/Cajas.jpg" width="75px"></img></div>
+            <div style="float:left;"><img src="Cajas.JPG" width="75px"></img></div>
 		<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
                 <div class="clear"></div>
 	</div><!-- header -->
@@ -32,11 +32,13 @@
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
 				array('label'=>'Inicio', 'url'=>array('/site/index')),
-				array('label'=>'Bienes', 'url'=>array('bienes/index')),
-                                array('label'=>'Dispositivos', 'url'=>array('dispositivos/index')),
-				array('label'=>'Categorias', 'url'=>array('/categorias/index')),
+				#array('label'=>'Bienes', 'url'=>array('bienes/index')),
+                                array('label'=>'Dispositivos', 'url'=>array('/dispositivos/index')),
+				#array('label'=>'Tipos', 'url'=>array('/tipos/index')),
+                                array('label'=>'Marcas', 'url'=>array('/marcas/index')),
+                                array('label'=>'Modelos', 'url'=>array('/modelos/index')),
                                 array('label'=>'Estados', 'url'=>array('/estados/index')),
-                                array('label'=>'Contacto', 'url'=>array('/site/contact')),
+                                #array('label'=>'Contacto', 'url'=>array('/site/contact')),
 				array('label'=>'Ingresar', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
 				array('label'=>'Salir ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
 			),

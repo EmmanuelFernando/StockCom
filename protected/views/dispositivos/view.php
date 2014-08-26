@@ -4,7 +4,7 @@
 
 $this->breadcrumbs=array(
 	'Dispositivos'=>array('index'),
-	$model->id,
+	$model->codigo,
 );
 
 $this->menu=array(
@@ -12,21 +12,21 @@ $this->menu=array(
 	array('label'=>'Nuevo Dispositivo', 'url'=>array('create')),
 	array('label'=>'Actualizar Dispositivos', 'url'=>array('update', 'id'=>$model->id)),
 	array('label'=>'Eliminar Dispositivos', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'administrar Dispositivos', 'url'=>array('admin')),
+	array('label'=>'Administrar Dispositivos', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Ver el Dispositivo #<?php echo $model->id; ?></h1>
+<h1>Ver el dispositivo #<?php echo $model->codigo; ?></h1>
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
-		'id',
+		#'id',
 		'codigo',
 		'fecha',
-		'tipos_id',
-		'marcas_id',
-		'modelos_id',
-		'estado_id',
+		'tipos.descripcion',
+		'marcas.descripcion',
+		'modelos.descripcion',
+		'estado.descripcion',
 	),
 )); ?>

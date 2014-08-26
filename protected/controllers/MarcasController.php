@@ -1,6 +1,6 @@
 <?php
 
-class DispositivosController extends Controller
+class MarcasController extends Controller
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -15,7 +15,7 @@ class DispositivosController extends Controller
 	{
 		return array(
 			'accessControl', // perform access control for CRUD operations
-			#'postOnly + delete', // we only allow deletion via POST request
+			'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
 
@@ -36,7 +36,7 @@ class DispositivosController extends Controller
 				'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete','selectmarcas','selectmodelos'),
+				'actions'=>array('admin','delete'),
 				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
@@ -62,14 +62,14 @@ class DispositivosController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new Dispositivos;
+		$model=new Marcas;
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Dispositivos']))
+		if(isset($_POST['Marcas']))
 		{
-			$model->attributes=$_POST['Dispositivos'];
+			$model->attributes=$_POST['Marcas'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -91,9 +91,9 @@ class DispositivosController extends Controller
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['Dispositivos']))
+		if(isset($_POST['Marcas']))
 		{
-			$model->attributes=$_POST['Dispositivos'];
+			$model->attributes=$_POST['Marcas'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
 		}
@@ -110,28 +110,19 @@ class DispositivosController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		if(Yii::app()->request->isPostRequest)
-		{
-			// we only allow deletion via POST request
-                
-                        $this->loadModel($id)->delete();
+		$this->loadModel($id)->delete();
 
-                        // if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-                        if(!isset($_GET['ajax']))
-                                $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-	
-                }
-                else
-                        throw new CHttpException(400,'Solicitud válida. Por favor, no repita esta solicitud de nuevo.');
-                        
-        }
+		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+		if(!isset($_GET['ajax']))
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+	}
 
 	/**
 	 * Lists all models.
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Dispositivos');
+		$dataProvider=new CActiveDataProvider('Marcas');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));
@@ -142,10 +133,10 @@ class DispositivosController extends Controller
 	 */
 	public function actionAdmin()
 	{
-		$model=new Dispositivos('search');
+		$model=new Marcas('search');
 		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Dispositivos']))
-			$model->attributes=$_GET['Dispositivos'];
+		if(isset($_GET['Marcas']))
+			$model->attributes=$_GET['Marcas'];
 
 		$this->render('admin',array(
 			'model'=>$model,
@@ -156,61 +147,27 @@ class DispositivosController extends Controller
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.
 	 * @param integer $id the ID of the model to be loaded
-	 * @return Dispositivos the loaded model
+	 * @return Marcas the loaded model
 	 * @throws CHttpException
 	 */
 	public function loadModel($id)
 	{
-		$model=Dispositivos::model()->findByPk($id);
+		$model=Marcas::model()->findByPk($id);
 		if($model===null)
-			throw new CHttpException(404,'La página solicitada no existe.');
+			throw new CHttpException(404,'The requested page does not exist.');
 		return $model;
 	}
 
 	/**
 	 * Performs the AJAX validation.
-	 * @param Dispositivos $model the model to be validated
+	 * @param Marcas $model the model to be validated
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='dispositivos-form')
+		if(isset($_POST['ajax']) && $_POST['ajax']==='marcas-form')
 		{
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
 	}
-        
-         public function actionSelectmarcas()
-        {
-            $id_uno = $_POST['Dispositivos']['tipos_id'];
-            $lista = Marcas::model()->findAll('tipos_id = :tipos_id',array(':tipos_id'=>$id_uno));
-            $lista = CHtml::listData($lista,'id','descripcion');
-            
-            echo CHtml::tag('option', array('value' => ''), 'Seleccione', true);
-            
-            foreach ($lista as $valor => $descripcion){
-                echo CHtml::tag('option',array('value'=>$valor),CHtml::encode($descripcion), true );
-                
-            }
-            
-        }
-        
-        
-         public function actionSelectmodelos()
-        {
-            $id_dos = $_POST['Dispositivos']['marcas_id'];
-            $lista = Modelos::model()->findAll('marcas_id = :marcas_id',array(':marcas_id'=>$id_dos));
-            $lista = CHtml::listData($lista,'id','descripcion');
-            
-            echo CHtml::tag('option', array('value' => ''), 'Seleccione', true);
-            
-            foreach ($lista as $valor => $descripcion){
-                echo CHtml::tag('option',array('value'=>$valor),CHtml::encode($descripcion), true );
-                
-            }
-            
-        }
-        
-        
-        
 }

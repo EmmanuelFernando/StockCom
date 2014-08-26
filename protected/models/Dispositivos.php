@@ -20,6 +20,8 @@
  */
 class Dispositivos extends CActiveRecord
 {
+    
+    public $nombre_tipos;
 
     /**
 	 * Returns the static model of the specified AR class.
@@ -48,7 +50,7 @@ class Dispositivos extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('codigo, fecha, tipos_id, marcas_id, modelos_id, estado_id', 'required'),
+                        array('codigo, fecha, tipos_id, marcas_id, modelos_id, estado_id', 'required'),
 			array('codigo, tipos_id, marcas_id, modelos_id, estado_id', 'numerical', 'integerOnly'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -83,7 +85,12 @@ class Dispositivos extends CActiveRecord
 			'tipos_id' => 'Tipos',
 			'marcas_id' => 'Marcas',
 			'modelos_id' => 'Modelos',
-			'estado_id' => 'Estado',
+			'estado_id' => 'Estados',
+                        
+                        'tipos.descripcion' => 'Tipo',
+			'marcas.descripcion' => 'Marca',
+			'modelos.descripcion' => 'Modelo',
+			'estado.descripcion' => 'Estado',
 		);
 	}
 
@@ -112,7 +119,12 @@ class Dispositivos extends CActiveRecord
 		$criteria->compare('marcas_id',$this->marcas_id);
 		$criteria->compare('modelos_id',$this->modelos_id);
 		$criteria->compare('estado_id',$this->estado_id);
-
+                
+                $criteria->compare('tipos.descripcion',$this->tipos_id);
+		$criteria->compare('marcas.descripcion',$this->marcas_id);
+		$criteria->compare('modelos.descripcion',$this->modelos_id);
+		$criteria->compare('estado.descripcion',$this->estado_id);
+                
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));

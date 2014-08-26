@@ -3,16 +3,16 @@
 /* @var $model Estados */
 
 $this->breadcrumbs=array(
-	'Estadoses'=>array('index'),
-	'Create',
+	'Estados'=>array('index'),
+	'Nuevo',
 );
 
 $this->menu=array(
-	array('label'=>'List Estados', 'url'=>array('index')),
-	array('label'=>'Manage Estados', 'url'=>array('admin')),
+	array('label'=>'Listar Estados', 'url'=>array('index')),
+	array('label'=>'Administrar Estados', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Create Estados</h1>
+<h1>Nuevo Estado</h1>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

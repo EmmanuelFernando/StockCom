@@ -4,13 +4,16 @@
 $this->pageTitle=Yii::app()->name;
 ?>
 <br>
-<h1>Inventario de Direccion de Comunicaciones
+<h1>Inventario de la Direccion de Comunicaciones
 
 <!-- <i><?php echo CHtml::encode(Yii::app()->name); ?></i> -->
 
 </h1>
 
-<p>Esta es la aplicacion de inventario de Direccion de Comunicaciones.</p>
+<p>Esta es la aplicacion de inventario de la Direccion de Comunicaciones.</p>
+
+
+<!--
 
 <p>You may change the content of this page by modifying the following two files:</p>
 <ul>
@@ -22,3 +25,6 @@ $this->pageTitle=Yii::app()->name;
 the <a href="http://www.yiiframework.com/doc/">documentation</a>.
 Feel free to ask in the <a href="http://www.yiiframework.com/forum/">forum</a>,
 should you have any questions.</p>
+
+
+-->

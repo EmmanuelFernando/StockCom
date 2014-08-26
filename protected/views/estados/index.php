@@ -3,16 +3,16 @@
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
-	'Estadoses',
+	'Estados',
 );
 
 $this->menu=array(
-	array('label'=>'Create Estados', 'url'=>array('create')),
-	array('label'=>'Manage Estados', 'url'=>array('admin')),
+	array('label'=>'Nuevo Estado', 'url'=>array('create')),
+	array('label'=>'Administracion de Estados', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Estadoses</h1>
+<h1>Estados</h1>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,

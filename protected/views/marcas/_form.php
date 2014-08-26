@@ -1,13 +1,13 @@
 <?php
-/* @var $this EstadosController */
-/* @var $model Estados */
+/* @var $this MarcasController */
+/* @var $model Marcas */
 /* @var $form CActiveForm */
 ?>
 
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'estados-form',
+	'id'=>'marcas-form',
 	// Please note: When you enable ajax validation, make sure the corresponding
 	// controller action is handling ajax validation correctly.
 	// There is a call to performAjaxValidation() commented in generated controller code.
@@ -15,18 +15,24 @@
 	'enableAjaxValidation'=>false,
 )); ?>
 
-	<p class="note">Los campos con <span class="required">*</span> son obligatorios.</p>
+	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
 	<?php echo $form->errorSummary($model); ?>
 
 	<div class="row">
+		<?php echo $form->labelEx($model,'tipos_id'); ?>
+		<?php echo $form->textField($model,'tipos_id'); ?>
+		<?php echo $form->error($model,'tipos_id'); ?>
+	</div>
+
+	<div class="row">
 		<?php echo $form->labelEx($model,'descripcion'); ?>
-		<?php echo $form->textField($model,'descripcion',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->textField($model,'descripcion',array('size'=>30,'maxlength'=>30)); ?>
 		<?php echo $form->error($model,'descripcion'); ?>
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Nuevo' : 'Guardar'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

@@ -43,7 +43,7 @@ o <b>=</b>) al comienzo de cada uno de los valores de búsqueda para especificar
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'bienes-grid',
 	'dataProvider'=>$model->search(),
-	'filter'=>$model,
+	'filter'=>$model->id,
 	'columns'=>array(
 		'id',
                 'fecha',

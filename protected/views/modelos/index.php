@@ -1,18 +1,18 @@
 <?php
-/* @var $this DispositivosController */
+/* @var $this ModelosController */
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
-	'Dispositivos',
+	'Modelos',
 );
 
 $this->menu=array(
-	array('label'=>'Nuevo Dispositivo', 'url'=>array('create')),
-	array('label'=>'Administrar Dispositivos', 'url'=>array('admin')),
+	array('label'=>'Nuevo Modelo', 'url'=>array('create')),
+	array('label'=>'Administrar Modelos', 'url'=>array('admin')),
 );
 ?>
 
-<h1>Dispositivos</h1>
+<h1>Modelos</h1>
 
 <?php $this->widget('zii.widgets.CListView', array(
 	'dataProvider'=>$dataProvider,

@@ -27,7 +27,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'fecha'); ?>
-		 <?php $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+		<?php $this->widget('zii.widgets.jui.CJuiDatePicker', array(
                                                                             'model'=>$model,
                                                                             'attribute'=>'fecha',
                                                                             'value'=>$model->fecha,
@@ -115,7 +115,7 @@
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Crear' : 'Save'); ?>
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Crear' : 'Crear'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

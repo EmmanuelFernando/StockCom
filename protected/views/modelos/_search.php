@@ -1,6 +1,6 @@
 <?php
-/* @var $this EstadosController */
-/* @var $model Estados */
+/* @var $this ModelosController */
+/* @var $model Modelos */
 /* @var $form CActiveForm */
 ?>
 
@@ -10,19 +10,24 @@
 	'action'=>Yii::app()->createUrl($this->route),
 	'method'=>'get',
 )); ?>
-<!--
+
 	<div class="row">
 		<?php echo $form->label($model,'id'); ?>
 		<?php echo $form->textField($model,'id'); ?>
 	</div>
--->
+
+	<div class="row">
+		<?php echo $form->label($model,'marcas_id'); ?>
+		<?php echo $form->textField($model,'marcas_id'); ?>
+	</div>
+
 	<div class="row">
 		<?php echo $form->label($model,'descripcion'); ?>
-		<?php echo $form->textField($model,'descripcion',array('size'=>45,'maxlength'=>45)); ?>
+		<?php echo $form->textField($model,'descripcion',array('size'=>30,'maxlength'=>30)); ?>
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton('Buscar'); ?>
+		<?php echo CHtml::submitButton('Search'); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
