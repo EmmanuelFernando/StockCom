@@ -46,9 +46,19 @@
                            
 	</div>        
         
+        <?php global $consulta;
+     $consulta='hola';
+      ?>
+        
 	<div class="row">
 		<?php echo $form->labelEx($model,'categoria_id'); ?>
-		<?php echo $form->dropDownList($model,'categoria_id',CHtml::listData(Categorias::model()->findAll(),'id', 'marca','descripcion'),array('empty'=>'seleccione la categoria')); ?>
+                <?php echo $form->dropDownList($model,'categoria_id',CHtml::listData(Categorias::model()->findAll(),'id', 'descripcion'),array('empty'=>'seleccione la categoria')); ?>
+                
+                
+                    
+                <?php $consulta=$model->fecha; ?>
+                <?php echo $consulta; ?>
+		<?php echo $form->dropDownList($model,'categoria_id',CHtml::listData(Categorias::model()->findAll('marca = "Motorola"'),'id', 'marca','descripcion'),array('empty'=>'seleccione la categoria')); ?>
 		<?php echo $form->error($model,'estado_id'); ?>
                            
 	</div>

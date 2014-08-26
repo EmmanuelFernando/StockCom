@@ -69,6 +69,7 @@ class BienesController extends Controller
  
 		if(isset($_POST['Bienes']))
 		{
+                                     
 			$model->attributes=$_POST['Bienes'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));

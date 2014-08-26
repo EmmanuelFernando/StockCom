@@ -1,43 +1,36 @@
 <?php
 
 /**
- * This is the model class for table "dispositivos".
+ * This is the model class for table "modelos".
  *
- * The followings are the available columns in table 'dispositivos':
+ * The followings are the available columns in table 'modelos':
  * @property integer $id
- * @property integer $codigo
- * @property string $fecha
- * @property integer $tipos_id
  * @property integer $marcas_id
- * @property integer $modelos_id
- * @property integer $estado_id
+ * @property string $descripcion
  *
  * The followings are the available model relations:
- * @property Estados $estado
- * @property TiposDispositivos $tipos
+ * @property Dispositivos[] $dispositivoses
  * @property Marcas $marcas
- * @property Modelos $modelos
  */
-class Dispositivos extends CActiveRecord
+class Modelos extends CActiveRecord
 {
-
-    /**
+	/**
 	 * Returns the static model of the specified AR class.
+	 * Please note that you should have this exact method in all your CActiveRecord descendants!
 	 * @param string $className active record class name.
-	 * @return Registro the static model class
+	 * @return Modelos the static model class
 	 */
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
 	}
-    
         
-    /**
+	/**
 	 * @return string the associated database table name
 	 */
 	public function tableName()
 	{
-		return 'dispositivos';
+		return 'modelos';
 	}
 
 	/**
@@ -48,11 +41,12 @@ class Dispositivos extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('codigo, fecha, tipos_id, marcas_id, modelos_id, estado_id', 'required'),
-			array('codigo, tipos_id, marcas_id, modelos_id, estado_id', 'numerical', 'integerOnly'=>true),
+			array('marcas_id, descripcion', 'required'),
+			array('marcas_id', 'numerical', 'integerOnly'=>true),
+			array('descripcion', 'length', 'max'=>30),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, codigo, fecha, tipos_id, marcas_id, modelos_id, estado_id', 'safe', 'on'=>'search'),
+			array('id, marcas_id, descripcion', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -64,10 +58,8 @@ class Dispositivos extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'estado' => array(self::BELONGS_TO, 'Estados', 'estado_id'),
-			'tipos' => array(self::BELONGS_TO, 'TiposDispositivos', 'tipos_id'),
+			'dispositivos' => array(self::HAS_MANY, 'Dispositivos', 'modelos_id'),
 			'marcas' => array(self::BELONGS_TO, 'Marcas', 'marcas_id'),
-			'modelos' => array(self::BELONGS_TO, 'Modelos', 'modelos_id'),
 		);
 	}
 
@@ -78,12 +70,8 @@ class Dispositivos extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'codigo' => 'Codigo',
-			'fecha' => 'Fecha',
-			'tipos_id' => 'Tipos',
 			'marcas_id' => 'Marcas',
-			'modelos_id' => 'Modelos',
-			'estado_id' => 'Estado',
+			'descripcion' => 'Descripcion',
 		);
 	}
 
@@ -106,26 +94,12 @@ class Dispositivos extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
-		$criteria->compare('codigo',$this->codigo);
-		$criteria->compare('fecha',$this->fecha,true);
-		$criteria->compare('tipos_id',$this->tipos_id);
 		$criteria->compare('marcas_id',$this->marcas_id);
-		$criteria->compare('modelos_id',$this->modelos_id);
-		$criteria->compare('estado_id',$this->estado_id);
+		$criteria->compare('descripcion',$this->descripcion,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
 	}
 
-	/**
-	 * Returns the static model of the specified AR class.
-	 * Please note that you should have this exact method in all your CActiveRecord descendants!
-	 * @param string $className active record class name.
-	 * @return Dispositivos the static model class
-	 */
-/*	public static function model($className=__CLASS__)
-	{
-		return parent::model($className);
-	}*/
 }

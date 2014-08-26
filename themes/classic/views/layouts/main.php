@@ -33,6 +33,7 @@
 			'items'=>array(
 				array('label'=>'Inicio', 'url'=>array('/site/index')),
 				array('label'=>'Bienes', 'url'=>array('bienes/index')),
+                                array('label'=>'Dispositivos', 'url'=>array('dispositivos/index')),
 				array('label'=>'Categorias', 'url'=>array('/categorias/index')),
                                 array('label'=>'Estados', 'url'=>array('/estados/index')),
                                 array('label'=>'Contacto', 'url'=>array('/site/contact')),
